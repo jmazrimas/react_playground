@@ -4,10 +4,15 @@ import {
   HashRouter,
   Link
 } from 'react-router-dom'
+import classNames from 'classnames/bind';
 
 export class NavBar extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {selectedIndex: 0};
+  }
+  updateSelectedNav(navIndex) {
+    this.setState({selectedIndex: navIndex});
   }
   render() {
     return (
@@ -16,8 +21,8 @@ export class NavBar extends React.Component {
         <HashRouter>
           <ul className="list-group">
               {
-                this.props.navs.map((nav) => {
-                  return <NavItem key={nav.title} navName={nav.title} navRoute={nav.route}/>
+                this.props.navs.map((nav, i) => {
+                  return <NavItem key={nav.title} navName={nav.title} navRoute={nav.route} navIndex={i} isSelected={(this.state.selectedIndex === i)} updateSelectedNav={this.updateSelectedNav.bind(this)}/>
                 })
               }
           </ul>
@@ -27,15 +32,22 @@ export class NavBar extends React.Component {
   }
 }
 
+
 class NavItem extends React.Component {
   constructor(props) {
     super(props);
   }
+  handleLinkClick() {
+    this.props.updateSelectedNav(this.props.navIndex);
+  }
   render() {
+    var navClasses = classNames({
+      "list-group-item": true,
+      "active": this.props.isSelected
+    });
     return (
-      // need to add the active class
-      <Link to={this.props.navRoute}>
-        <li className="list-group-item">{this.props.navName}</li>
+      <Link onClick={this.handleLinkClick.bind(this)} to={this.props.navRoute}>
+        <li className={navClasses}>{this.props.navName}</li>
       </Link>
     )
   }
