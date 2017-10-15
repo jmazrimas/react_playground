@@ -3,8 +3,7 @@ import { Two  } from 'two/two';
 import { Three  } from 'three/three';
 
 // This is a list of all the main routes in the app
-module.exports = () => {
-  return {
+module.exports = {
     navs: [
       {
         title: 'Home',
@@ -23,5 +22,4 @@ module.exports = () => {
         component: Three
       }
     ]
-  }
 }

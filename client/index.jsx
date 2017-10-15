@@ -9,9 +9,7 @@ import {
 } from 'react-router-dom'
 
 import { NavBar } from 'common/navbar';
-import navOptions from 'common/navoptions'
-
-let navs = navOptions().navs;
+import { navs } from 'common/navoptions';
 
 class App extends React.Component {
     constructor(props) {
