@@ -8,10 +8,10 @@ import {
   Switch
 } from 'react-router-dom'
 
-import { NavBar } from 'navbar';
-import { Home } from 'home';
-import { Two  } from 'two';
-import { Three  } from 'three';
+import { NavBar } from 'common/navbar';
+import { Home } from 'home/home';
+import { Two  } from 'two/two';
+import { Three  } from 'three/three';
 
 let navs = [
   {
