@@ -11,6 +11,7 @@ export class NavBar extends React.Component {
     super(props);
     // Loop over the current navs to find what route
     //   we're on to manage reload/bookmarking
+    this.state = {selectedIndex: 0};
     this.props.navs.forEach((nav, i) => {
       if (this.props.currentRoute.replace("#","") == nav.route) {
         this.state = {selectedIndex: i};
