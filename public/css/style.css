@@ -2,9 +2,12 @@ h3 {
     color: red;
 }
 
+ul > a {
+  text-decoration: none;
+}
+
 ul > a:hover {
   text-decoration: none;
-  color: inherit;
 }
 
 a.active li {

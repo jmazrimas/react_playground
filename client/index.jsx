@@ -3,10 +3,7 @@ import { render } from 'react-dom';
 import {
   BrowserRouter as Router,
   HashRouter,
-  hashHistory,
-  Route,
-  Link,
-  Switch
+  Route
 } from 'react-router-dom'
 
 import { NavBar } from 'common/navbar';
@@ -38,9 +35,9 @@ class App extends React.Component {
 render((
   <HashRouter>
     <App>
+        <Route exact path="/" component={Home}/>
         <Route path="/two" component={Two}/>
         <Route path="/three" component={Three}/>
-        <Route exact path="/" component={Home}/>
     </App>
   </HashRouter>
 ), document.getElementById('content'))

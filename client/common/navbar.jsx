@@ -11,9 +11,6 @@ export class NavBar extends React.Component {
   constructor(props) {
     super(props);
   }
-  updateSelectedNav(navIndex) {
-    this.setState({selectedIndex: navIndex});
-  }
   render() {
     return (
       <div className="col-lg-2 col-md-2 col-sm-2">
@@ -35,13 +32,9 @@ export class NavBar extends React.Component {
   }
 }
 
-
 class NavItem extends React.Component {
   constructor(props) {
     super(props);
-  }
-  handleLinkClick() {
-    this.props.updateSelectedNav(this.props.navIndex);
   }
   render() {
     var navClasses = classNames({
