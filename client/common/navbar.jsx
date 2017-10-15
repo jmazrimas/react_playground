@@ -1,11 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
-import {
-  HashRouter,
-  Link,
-  NavLink
-} from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 import classNames from 'classnames/bind';
+
+import { NavItem } from 'common/navitem';
 
 export class NavBar extends React.Component {
   constructor(props) {
@@ -28,22 +26,6 @@ export class NavBar extends React.Component {
           </ul>
         </HashRouter>
       </div>
-    )
-  }
-}
-
-class NavItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
-  render() {
-    var navClasses = classNames({
-      "list-group-item": true
-    });
-    return (
-      <NavLink exact activeClassName="active" to={this.props.navRoute}>
-        <li className={navClasses}>{this.props.navName}</li>
-      </NavLink>
     )
   }
 }
