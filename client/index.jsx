@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import {
   BrowserRouter as Router,
   HashRouter,
+  hashHistory,
   Route,
   Link,
   Switch
@@ -10,6 +11,9 @@ import {
 
 import { NavBar } from 'common/navbar';
 import { navs } from 'common/navoptions';
+import { Home } from 'home/home';
+import { Two  } from 'two/two';
+import { Three  } from 'three/three';
 
 class App extends React.Component {
     constructor(props) {
@@ -23,19 +27,7 @@ class App extends React.Component {
                     <NavBar currentRoute={location.hash} navs={navs} />
                     <div className="col-lg-10 col-md-10 col-sm-10">
                         <h2>Content</h2>
-                        <HashRouter>
-                          <Switch>
-                            {
-                              navs.map((nav) => {
-                                if (nav.exact) {
-                                  return <Route key={nav.route} exact path={nav.route} component={nav.component} />
-                                } else {
-                                  return <Route key={nav.route} path={nav.route} component={nav.component} />
-                                }
-                              })
-                            }
-                          </Switch>
-                        </HashRouter>
+                          { this.props.children }
                     </div>
                 </div>
             </div>
@@ -44,5 +36,11 @@ class App extends React.Component {
 }
 
 render((
-    <App />
+  <HashRouter>
+    <App>
+        <Route exact path="/" component={Home}/>
+        <Route path="/two" component={Two}/>
+        <Route path="/three" component={Three}/>
+    </App>
+  </HashRouter>
 ), document.getElementById('content'))
