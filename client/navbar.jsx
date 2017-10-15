@@ -9,7 +9,14 @@ import classNames from 'classnames/bind';
 export class NavBar extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {selectedIndex: 0};
+    // Loop over the current navs to find what route
+    //   we're on to manage reload/bookmarking
+    this.props.navs.forEach((nav, i) => {
+      if (this.props.currentRoute.replace("#","") == nav.route) {
+        this.state = {selectedIndex: i};
+        return;
+      }
+    })
   }
   updateSelectedNav(navIndex) {
     this.setState({selectedIndex: navIndex});
