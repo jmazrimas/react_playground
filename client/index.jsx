@@ -9,28 +9,9 @@ import {
 } from 'react-router-dom'
 
 import { NavBar } from 'common/navbar';
-import { Home } from 'home/home';
-import { Two  } from 'two/two';
-import { Three  } from 'three/three';
+import navOptions from 'common/navoptions'
 
-let navs = [
-  {
-    title: 'Home',
-    route: '/',
-    component: Home,
-    exact: true
-  },
-  {
-    title: 'View Two',
-    route: '/two',
-    component: Two
-  },
-  {
-    title: 'View Three',
-    route: '/three',
-    component: Three
-  }
-]
+let navs = navOptions().navs;
 
 class App extends React.Component {
     constructor(props) {
