@@ -16,15 +16,19 @@ import { Three  } from 'three';
 let navs = [
   {
     title: 'Home',
-    route: '/one'
+    route: '/',
+    component: Home,
+    exact: true
   },
   {
     title: 'View Two',
-    route: '/two'
+    route: '/two',
+    component: Two
   },
   {
     title: 'View Three',
-    route: '/three'
+    route: '/three',
+    component: Three
   }
 ]
 
@@ -42,9 +46,15 @@ class App extends React.Component {
                         <h2>Content</h2>
                         <HashRouter>
                           <Switch>
-                            <Route path="/two" component={Two} />
-                            <Route path="/three" component={Three} />
-                            <Route path="/" component={Home} />
+                            {
+                              navs.map((nav) => {
+                                if (nav.exact) {
+                                  return <Route key={nav.route} exact path={nav.route} component={nav.component} />
+                                } else {
+                                  return <Route key={nav.route} path={nav.route} component={nav.component} />
+                                }
+                              })
+                            }
                           </Switch>
                         </HashRouter>
                     </div>
