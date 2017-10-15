@@ -1,3 +1,15 @@
 h3 {
     color: red;
 }
+
+ul > a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+a.active li {
+  z-index: 2;
+  color: #fff;
+  background-color: #0275d8;
+  border-color: #0275d8;
+}

@@ -2,22 +2,14 @@ import React from 'react';
 import { render } from 'react-dom';
 import {
   HashRouter,
-  Link
+  Link,
+  NavLink
 } from 'react-router-dom'
 import classNames from 'classnames/bind';
 
 export class NavBar extends React.Component {
   constructor(props) {
     super(props);
-    // Loop over the current navs to find what route
-    //   we're on to manage reload/bookmarking
-    this.state = {selectedIndex: 0};
-    this.props.navs.forEach((nav, i) => {
-      if (this.props.currentRoute.replace("#","") == nav.route) {
-        this.state = {selectedIndex: i};
-        return;
-      }
-    })
   }
   updateSelectedNav(navIndex) {
     this.setState({selectedIndex: navIndex});
@@ -30,7 +22,10 @@ export class NavBar extends React.Component {
           <ul className="list-group">
               {
                 this.props.navs.map((nav, i) => {
-                  return <NavItem key={nav.title} navName={nav.title} navRoute={nav.route} navIndex={i} isSelected={(this.state.selectedIndex === i)} updateSelectedNav={this.updateSelectedNav.bind(this)}/>
+                  return <NavItem
+                            key={i}
+                            navName={nav.title}
+                            navRoute={nav.route}/>
                 })
               }
           </ul>
@@ -50,13 +45,12 @@ class NavItem extends React.Component {
   }
   render() {
     var navClasses = classNames({
-      "list-group-item": true,
-      "active": this.props.isSelected
+      "list-group-item": true
     });
     return (
-      <Link onClick={this.handleLinkClick.bind(this)} to={this.props.navRoute}>
+      <NavLink exact activeClassName="active" to={this.props.navRoute}>
         <li className={navClasses}>{this.props.navName}</li>
-      </Link>
+      </NavLink>
     )
   }
 }
