@@ -8,8 +8,7 @@ module.exports = {
       {
         title: 'Home',
         route: '/',
-        component: Home,
-        exact: true
+        component: Home
       },
       {
         title: 'View Two',

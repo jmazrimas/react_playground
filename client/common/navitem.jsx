@@ -1,10 +1,6 @@
 import React from 'react';
 import { render } from 'react-dom';
-import {
-  HashRouter,
-  NavLink
-} from 'react-router-dom'
-
+import { NavLink } from 'react-router-dom'
 import classNames from 'classnames/bind';
 
 export class NavItem extends React.Component {
